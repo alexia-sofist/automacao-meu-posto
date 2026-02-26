@@ -34,3 +34,42 @@ Then('sou redirecionado para a página com o título {string}', async function (
     const passou = await homePage.validarAcessoHome(tituloEsperado);
     expect(passou, `Redirecionamento para "${tituloEsperado}" falhou.`).to.be.true;
 });
+
+Then('eu devo visualizar o subtítulo de ajuda {string}', async function (texto) {
+    const visivel = await homePage.validarSubtituloAjuda(texto);
+    expect(visivel, `O subtítulo "${texto}" não foi encontrado ou não está visível.`).to.be.true;
+});
+
+Then('eu devo visualizar no card de atendimento o título {string}', async function (titulo) {
+    const sucesso = await homePage.validarTituloCardAtendimento(titulo);
+    expect(sucesso, `O título do card "${titulo}" não foi encontrado.`).to.be.true;
+});
+
+Then('eu valido todas as informações do card de atendimento ao revendedor', async function () {
+    const dadosEsperados = {
+        titulo: "Central de Atendimento ao Revendedor",
+        textoEmail: "E-mail exclusivo para atendimento App Premmia:",
+        email: "atpetrobraspremmia@vibraenergia.com.br",
+        textoTelefone: "ou pelo telefone:",
+        tel1: "4002 2040",
+        tel2: "0800 282 204"
+    };
+
+    const resultado = await homePage.validarCardAtendimentoCompleto(dadosEsperados);
+    expect(resultado, "As informações do card de atendimento não conferem com o esperado.").to.be.true;
+});
+
+Then('eu devo visualizar o nome do posto {string} no cabeçalho', async function (nomePosto) {
+    const valido = await homePage.validarNomePosto(nomePosto);
+    expect(valido, `O posto "${nomePosto}" não foi encontrado no cabeçalho.`).to.be.true;
+});
+
+When('eu clico no botão de seleção de posto no cabeçalho', async function () {
+    // Chama o método que criamos na HomePage para clicar no menu do posto
+    await homePage.clicarBotaoSelecaoPosto();
+});
+
+Then('eu devo visualizar as opções {string} e {string} no menu do posto', async function (op1, op2) {
+    const visivel = await homePage.validarOpcoesMenuPosto(op1, op2);
+    expect(visivel, `As opções "${op1}" e "${op2}" não apareceram no menu.`).to.be.true;
+});

@@ -9,7 +9,7 @@ export let driver: WebDriver;
 export let loginPage: LoginPage;
 export let homePage: HomePage;
 
-setDefaultTimeout(60000);
+setDefaultTimeout(30 * 1000);
 
 Before(async function (scenario) {
     console.log(`\n>>> Iniciando cenário: ${scenario.pickle.name}`);

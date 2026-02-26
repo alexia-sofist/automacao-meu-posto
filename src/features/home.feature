@@ -40,3 +40,25 @@ Feature: Home Dashboard - Layout e Navegação
       | RELATORIOS    | Relatórios             |
       | CASHBACK      | Cashback da Taxa do App|
       | PAGAMENTOS    | Pagamentos a receber   |
+
+  @home_ajuda
+  Scenario: Validar seção de atendimento ao revendedor
+    Given sou redirecionado para a tela "Meu Posto" para confirmar o acesso
+    Then eu devo visualizar o subtítulo de ajuda "Precisa de ajuda?"
+
+ @home_ajuda_completo
+  Scenario: Validar integridade total do card de suporte
+    Given sou redirecionado para a tela "Meu Posto" para confirmar o acesso
+    Then eu devo visualizar o subtítulo de ajuda "Precisa de ajuda?"
+    And eu valido todas as informações do card de atendimento ao revendedor
+
+  @home_posto
+  Scenario: Validar identificação do posto logado
+    Then eu devo visualizar o nome do posto "19105 - POSTO BRASIL" no cabeçalho
+
+  @home_menu_posto
+  Scenario: Validar opções de saída e retorno no menu do cabeçalho
+    Given sou redirecionado para a tela "Meu Posto" para confirmar o acesso
+    When eu clico no botão de seleção de posto no cabeçalho
+    Then eu devo visualizar as opções "Voltar" e "Sair" no menu do posto
+    

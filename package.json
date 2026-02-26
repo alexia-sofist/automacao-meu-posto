@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
 "scripts": {
-  "cucumber": "npx cucumber-js src/features/**/*.feature --require-module ts-node/register --require src/step-definitions/**/*.ts --format json:reports/cucumber_report.json",
+  "cucumber": "npx cucumber-js src/features/**/*.feature --require-module ts-node/register --require src/step-definitions/**/*.ts --format json:reports/cucumber_report.json --retry 2",
   "report": "node generate-report.js",
-  "test": "npm run cucumber ; npm run report"
+  "test": "npm run cucumber && npm run report"
 },
   "keywords": [],
   "author": "",

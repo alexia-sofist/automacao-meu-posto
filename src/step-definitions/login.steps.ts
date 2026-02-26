@@ -13,11 +13,6 @@ When('submeto minhas credenciais de Administrador do Posto', async function () {
 });
 
 Then('o sistema deve realizar o login com sucesso', async function () {
-    /**
-     * Espera inteligente para o redirecionamento.
-     * O teste prossegue assim que a URL contiver '/meuposto', sem travar o tempo total.
-     *
-     */
     const logado = await driver.wait(async () => {
         const urlAtual = await driver.getCurrentUrl();
         return urlAtual.includes('/meuposto');
